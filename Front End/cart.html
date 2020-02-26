@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="Resources/css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <style>
+    tr {
+      position: relative;
+      margin-bottom: 1em;
+      border-top: 1px solid #aaa198;
+      border-bottom: 1px solid #aaa198;
+      ;
+    }
+    .fields {
+      clear: both;
+    }
+    .region {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0 10px;
+    }
+    #item_img {
+      margin-top: 15vh;
+      margin-left: 40px;
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 55px;
+    }
+    h2, h4 {
+      color: black;
+      text-align: left;
+      font-family: 'Open Sans Condensed', sans-serif;
+    }
+    .hero-section-override {
+      /* height: 85vh; */
+      background: url("http://musicments.com/img/d_default/table-background/table-background-wood-5c74728ac1073.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+    .summary-section {
+        background: linear-gradient(rgb(0,0,0,0.8),rgb(0,0,0,0.8)));
+    }
+    .hero-1 {
+      /* width: 100vh; */
+      /* background-color: red */
+    }
+    .hero-2 {
+      /* width: 85vh; */
+      padding-right: 5rem
+    }
+    .hero-3 {
+      /* width: 85vh; */
+      padding-top: 100px;
+      padding-left: 50px;
+      overflow: scroll;
+    }
+    .break-word {
+      word-wrap: break-word;
+    }
+    .hero-btn-override {
+      margin-top: 50px;
+      margin-left: -1.5%;
+      padding: 4px 30px;
+      font-variant: all-small-caps;
+      border-radius: 6px;
+      border: 2;
+      color: green;
+    }
+    .nav-right-items-space {
+      padding-right: 1rem
+    }
+      
+      .icon{
+          font-size: 25px;
+      }
+      
+      .icon2{
+          font-size: 10px;
+      }
+      
+      .user{
+          font-size: 20px;
+          font-variant: small-caps;
+      }
+      
+      .card-num{
+          width: 100%;
+          text-align: left;
+          border: 1px solid gray;
+          line-height: 50px;
+          padding: 10px 10px;
+          margin-bottom: 10px;
+          border-radius: 10px;
+          color: gray;
+      }
+      
+      
+      .card-code{
+          font-size: 15px;
+          height: 40px;
+      }
+      
+      
+      .radio-value{
+          display: inline-block;
+          margin-left: 10px;
+          line-height: 20px;
+          font-size: 17px;
+      }
+      
+      
+      .modal-heading{
+          font-size: 32px;
+          letter-spacing: 0.04em;
+          margin-bottom: 30px;
+          font-family: 'Roboto', sans-serif;
+          font-variant: all-small-caps;
+          text-decoration: underline;
+          color: black;
+      }
+      
+      .modal{
+          border-radius: 10px;
+      }
+      
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid main-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="Resources/Images/logo.png" width="70px" height="auto" class="d-inline-block align-top" alt="">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="menu.html">Menu</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="myCard.html">My Card</a>
+          </li>
+        </ul>
+        <span class="my-2 my-lg-0 nav-right-items-space"><i class="fa fa-2x fa-shopping-cart icon"></i><span id="cart-badge" class="badge badge-pill badge-danger icon2"></span></span>
+        <span class="nav-right-items-space user">Welcome back, Hieu!</span>
+        <button class="btn btn-outline-success my-2 my-sm-0 nav-right-items-space" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+    <div class="row menu-section" id="menu">
+      <h1>
+      Shopping Cart
+      </h1>
+    </div>
+    <div class="row hero-section-override">
+      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body" style="text-align:center" id="modal-message">
+                <div class="modal-heading">Select you payment card</div>
+                <form>
+                <div id="card-html">
+                </div>  
+                <button class="btn btn-success" type="submit">Checkout</button>
+                  
+                    </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="items" class="col-md-7 hero-3"></div>
+      <div id="summary" class="col-md-4 hero-2">
+        <div class="card border-success mb-3 d-flex justify-content-center" style="font-family: 'Open Sans Condensed', sans-serif;">
+          <div class="card-header text-success"><h3>Your Order</h3></div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">Subtotal</div>
+              <div class="col-md-6"><span id="sub-total" class="float-right">$0.00</span></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">Shipping</div>
+              <div class="col-md-6"><span id="shipping" class="float-right">$0.00</span></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">Tax</div>
+              <div class="col-md-6"><span id="tax" class="float-right">$0.00</span></div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-6"><strong>Total</strong></div>
+              <div class="col-md-6"><span id="total" class="float-right">$0.00</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-outline-success hero-btn-override" onclick="handlePayment()">Place Order</button>
+        </div>
+      </div>
+    </div>
+    <div class="row footer">
+      © 2019 Starbucks Coffee Company. All rights reserved.
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="Resources/js/main.js"></script>
+
+  <script>
+      var cards = ["2131231231","12321312312","12312312321"]
+      
+    function updateSummarySection(){
+      var items = cart.items;
+      if (items.length == 0){
+        $("#summary").hide()
+      }
+      else {
+        $("#summary").show();
+        var total = 0;
+        items.map(function(item){
+          total += item.price;
+        })
+
+        $("#sub-total").html(`$${total.toFixed(2)}`);
+        $("#total").html(`$${total.toFixed(2)}`);
+      }
+    }
+
+    function deleteItem(idx){
+      cart.items.splice(idx, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartBadge();
+      renderItemSection();
+      updateSummarySection();
+
+    }
+
+    function clearCart(){
+      cart.items = [];
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartBadge();
+      renderItemSection();
+      updateSummarySection();
+
+    }
+
+    function renderItemSection() {
+      // $("#description").html(item.description);
+      // $("#price").html(`$${Number(item.price).toFixed(2)}`);
+      var toBeSet = "";
+
+      var items = cart.items;
+      if (items.length == 0){
+        toBeSet += `<div style="padding-bottom:50px">You have no item in cart.</div>`;
+      }
+      else {
+        for (var i = 0; i < items.length; i++){
+          var item = items[i];
+          toBeSet += `<div class="card border-success" style="padding:30px; margin-bottom:30px">
+            <div class="row">
+              <div class="col-2">
+                <img src="${item.image}" width="100px" height="auto">
+              </div>
+              <div class="col-10">
+                <!-- <div class="row"> -->
+                <div class="float-right text-success"><i class="far fa-times-circle" onclick="deleteItem(${i})"></i></div>
+                <div class="float-left text-success"><h5>${item.title}</h5></div>
+                <div class="float-left">${item.description}</div>
+              </div>
+            </div>
+          </div>`
+        }
+      }
+      $("#items").html(toBeSet);
+    }
+
+    function handlePayment(){
+      //$("#modal-message").html(`<span class="text-success"><i class="far fa-check-circle"></i>  Successfully place order!</span>`);
+      // $("#modal-message").html(`<span class="text-danger"><i class="far fa-times-circle"></i>  Insufficient fund...</span>`);
+        var set = ""
+        for(var i=0;i<cards.length;i++){
+            set+=`<div class="card-num" data-id='0'>
+                    <input type="radio" name="select-card" class="select-radio col-md-1" value="dasdas"><label class="col-md-6 radio-value">${cards[i]}</label>
+                    <input type="text" class="card-code col-md-4" placeholder="Enter your code">
+                </div>`
+        }
+        $("#card-html").html(set);
+      $('#confirmModal').modal('show');
+        paymentsuccess = true;
+        if(paymentsuccess){
+            clearCart();
+        }
+    }
+
+    function updateCartBadge(){
+      $("#cart-badge").html(cart.items.length);
+    }
+
+    function logout(){
+      localStorage.setItem("profile", JSON.stringify({}));
+      window.location = "index.html"
+    }
+  </script>
+
+  <script>
+    var profile = localStorage.getItem("profile");
+    if (profile){
+      profile = JSON.parse(profile);
+    }
+    else {
+      profile = {};
+    }
+
+    if (!profile.token){
+      // TODO: return to login page when not login
+      // logout();
+    }
+  </script>
+
+  <script>
+    // Retrieve data from local storage
+    var cart = localStorage.getItem("cart");
+    if (cart){
+      cart = JSON.parse(cart);
+    }
+    else {
+      cart = {
+        items: []
+      }
+    }
+  </script>
+
+  <script>
+    renderItemSection();
+    updateCartBadge();
+    updateSummarySection();
+  </script>
+    
+    <script>
+        $(document).on("change",".select-radio",function(){
+                $(".card-num").css({
+               "border":"1px solid gray",
+               color:"gray"
+           });
+            
+            $("input").css({
+               border:"1px solid gray"
+           });
+                $(this).parent(".card-num").css({
+               "border":"1px solid #28a745",
+               color:"#28a745"
+           });
+            
+           $(this).parent(".card-num").children("input").css({
+               border:"1px solid #28a745"
+           });
+        });
+    </script>
+    
+</body>
+
+</html>

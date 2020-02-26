@@ -1,0 +1,245 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="en">    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <style>
+          .nav-right-items-space {
+            padding-right: 1rem
+          }
+        </style>
+        <title>Home</title>
+    </head>
+    <body>
+        <div class="container-fluid main-container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="#" >
+                <img src="Images/logo.png" width="70px" height="auto" class="d-inline-block align-top" alt="">
+              </a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="home">Home</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="menu">Menu</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="card">My Card</a>
+                  </li>
+                </ul>
+                <span class="my-2 my-lg-0 nav-right-items-space" onclick="window.location='cart'"><i class="fa fa-2x fa-shopping-cart"></i><span id="cart-badge" class="badge badge-pill badge-danger"></span></span>
+                  <span class="nav-right-items-space">Welcome back!</span><span th:text="${user.firstname}    "></span>&ensp;&ensp;&ensp;
+                  <a class="btn btn-outline-success my-2 my-sm-0 nav-right-items-space" th:href="@{/logout}">Logout</a>
+               </div>
+            </nav>
+            <div class="row hero-section">
+                <div class="col-md-4 hero-1">
+                    <img id="coffee-img" src="Images/coffee.png" width="520px" height="auto">
+                </div>
+                <div class="col offset-sm-1 hero-2">
+                    <div class="row">
+                        <h2>Welcome to Starbucks!!</h2>
+                        <h4>We represents something beyond a cup of coffee..</h4>
+                    </div>
+                    <a href="menu">
+                        <button class="hero-btn">Explore Menu</button>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="row menu-section" id="menu">
+                <h1>
+                    Menu
+                </h1>
+                <div class="row menu-options">
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" id="coffee" value="Cold Coffee"> <label for="coffee" class="menu-label">Cold Coffee</label>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                </div>
+                <div class="row menu-options">
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                </div>
+                <div class="row menu-options">
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                </div>
+                <div class="row menu-options">
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                </div>
+                <div class="row menu-options">
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                </div>
+                <div class="row menu-options">
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                    <div class="col menu-option">
+                        <input type="checkbox" name="Cold Coffee" value="Cold Coffee">  <span class="menu-label">Cold Coffee</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-menu">Order</button>
+            </div>
+            <div class="row card-section">
+                <div class="col-md-5 card-image">
+                    <img id="card1" src="Resources/Images/card1.png">
+                    <img id="card2" src="Resources/Images/card2.jpg">
+                </div>
+                <div class="col card-info">
+                    <div class="row money-container">
+                        <div class="col money-box">
+                            <i class="fas coffee fa-coffee"></i>
+                            <span class="price">
+                                $50
+                            </span>
+                        </div>
+                        <div class="col money-box">
+                            <i class="fas coffee fa-coffee"></i>
+                            <span class="price">
+                                $100
+                            </span>
+                        </div>
+                    </div>
+                     <div class="row money-container">
+                        <div class="col money-box">
+                            <i class="fas coffee fa-coffee"></i>
+                            <span class="price">
+                                $50
+                            </span>
+                        </div>
+                        <div class="col money-box">
+                            <i class="fas coffee fa-coffee"></i>
+                            <span class="price">
+                                $100
+                            </span>
+                        </div>
+                    </div>
+                     <div class="row money-container">
+                        <div class="col money-box">
+                            <i class="fas coffee fa-coffee"></i>
+                            <span class="price">
+                                $50
+                            </span>
+                        </div>
+                        <div class="col money-box">
+                            <i class="fas coffee fa-coffee"></i>
+                            <span class="price">
+                                $100
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row footer">
+                © 2019 Starbucks Coffee Company. All rights reserved.
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+
+      <script>
+        function updateCartBadge(){
+          $("#cart-badge").html(cart.items.length);
+        }
+
+        function logout(){
+          localStorage.setItem("profile", JSON.stringify({}));
+          window.location = "index.html"
+        }
+      </script>
+
+      <script>
+        var profile = localStorage.getItem("profile");
+        if (profile){
+          profile = JSON.parse(profile);
+        }
+        else {
+          profile = {};
+        }
+
+        if (!profile.token){
+          // TODO: return to login page when not login
+          // logout();
+        }
+      </script>
+
+      <script>
+        // Retrieve data from local storage
+        var cart = localStorage.getItem("cart");
+        if (cart){
+          cart = JSON.parse(cart);
+        }
+        else {
+          cart = {
+            items: []
+          }
+        }
+      </script>
+
+      <script>
+        updateCartBadge();
+      </script>
+    </body>
+</html>

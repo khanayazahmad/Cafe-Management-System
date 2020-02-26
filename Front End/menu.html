@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="Resources/css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <style>
+    tr {
+      position: relative;
+      margin-bottom: 1em;
+      border-top: 1px solid #aaa198;
+      border-bottom: 1px solid #aaa198;
+      ;
+    }
+    .fields {
+      clear: both;
+    }
+      
+      .heading{
+          margin-top: 40px;
+          margin-bottom: 20px;
+          text-decoration: underline;
+          display: block;
+          margin-left:0.5%;
+          font-size: 35px!important;
+          font-variant: small-caps;
+          letter-spacing: 0.05em;
+      }
+    
+    .region {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0 10px;
+    }
+    #item_img {
+      margin-top: 15vh;
+      margin-left: 40px;
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 55px;
+    }
+    h2, h4 {
+      color: black;
+      text-align: left;
+      font-family: 'Open Sans Condensed', sans-serif;
+    }
+    .main-container {
+      background: url("http://musicments.com/img/d_default/table-background/table-background-wood-5c74728ac1073.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+    .hero-2 {
+      width: 85vh;
+    }
+    .break-word {
+      word-wrap: break-word;
+    }
+    .hero-btn-override {
+      margin-top: 50px;
+      margin-left: -1.5%;
+      padding: 4px 30px;
+      font-variant: all-small-caps;
+      border-radius: 6px;
+      border: 2;
+      color: green;
+    }
+    .nav-right-items-space {
+      padding-right: 1rem
+    }
+      
+      .card-title{
+          height: 60px;
+      }
+      
+      .card-img-top{
+        height: 300px;   
+      }
+      
+      .icon{
+          font-size: 25px;
+      }
+      
+      .icon2{
+          font-size: 10px;
+      }
+      
+      .user{
+          font-size: 20px;
+          font-variant: small-caps;
+      }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid main-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="Resources/Images/logo.png" width="70px" height="auto" class="d-inline-block align-top" alt="">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="menu.html">Menu</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="myCard.html">My Card</a>
+          </li>
+        </ul>
+        <span class="my-2 my-lg-0 nav-right-items-space" onclick="window.location='cart.html'"><i class="icon fa fa-2x fa-shopping-cart"></i><span id="cart-badge" class="icon2 badge badge-pill badge-danger"></span></span>
+        <span class="user nav-right-items-space">Welcome back, Hieu!</span>
+        <button class="btn btn-outline-success my-2 my-sm-0 nav-right-items-space" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+    <div class="hero-section-override">
+      <div id="menu-items" style="padding-bottom:2rem"></div>
+    </div>
+    <div class="row footer">
+      © 2019 Starbucks Coffee Company. All rights reserved.
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="Resources/js/main.js"></script>
+
+  <script>
+
+    function renderItems() {
+      var toBeSet = "";
+      
+      for (var i = 0; i < items.length; i++){
+          console.log(items[i].type);
+          toBeSet +=`<div class="row heading">
+          ${items[i].type}
+          </div>`
+          toBeSet += `<div class="row">`
+        
+        var item = items[i].val;
+          for(var j=0;j<item.length;j++){
+              console.log(item[j]);
+        toBeSet += `
+        <div class="col-4">
+            <div class="card" style="max-width:18rem">
+              <img class="card-img-top" src="${item[j].image}">
+              <div class="card-body">
+                <h5 class="card-title">${item[j].title}</h5>
+                <p class="card-text" style="font-family: 'Open Sans Condensed', sans-serif;">${item[j].description}</p>
+              </div>
+              <div class="card-body">
+                <button class="btn btn-success col-12" onclick="window.location='item.html?id=${item[j].id}'">Select</button>
+              </div>
+            </div>
+          </div>`
+      }
+      toBeSet += `</div>`
+      }
+      // toBeSet += "</div>";
+      // alert(toBeSet)
+      $("#menu-items").html(toBeSet);
+    }
+
+    function updateCartBadge(){
+      $("#cart-badge").html(cart.items.length);
+    }
+
+    function logout(){
+      localStorage.setItem("profile", JSON.stringify({}));
+      window.location = "index.html"
+    }
+  </script>
+
+  <script>
+    var profile = localStorage.getItem("profile");
+    if (profile){
+      profile = JSON.parse(profile);
+    }
+    else {
+      profile = {};
+    }
+
+    if (!profile.token){
+      // TODO: return to login page when not login
+      // logout();
+    }
+  </script>
+
+  <script>
+    // Retrieve data from local storage
+    var cart = localStorage.getItem("cart");
+    if (cart){
+      cart = JSON.parse(cart);
+    }
+    else {
+      cart = {
+        items: []
+      }
+    }
+  </script>
+
+  <script>
+    // TODO: make call to server here
+      
+    var items = [{type:"Coffee",val:[{
+      id: 1,
+      title: "Chai Latte",
+      price: 4.28,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/chai.jpg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    },{
+      id: 2,
+      title: "Expresso Shot",
+      price: 3.01,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/Expresso.jpg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    },{
+      id: 3,
+      title: "Cappuccino",
+      price: 3.01,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/Cappuccino.jpg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    }]},{type:"Bakery",val:[{
+      id: 1,
+      title: "Birthday Cake Pop",
+      price: 5.01,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/pop.jpg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    },{
+      id: 2,
+      title: "Banana Nut Bread",
+      price: 6.50,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/Banana.jpeg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    },{
+      id: 3,
+      title: "Cheese Danish",
+      price: 3.50,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/cheese.jpeg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    }]},{type:"Yogurt, Fruit, Spreads",val:[{
+      id: 1,
+      title: "Avocado Spread",
+      price: 4.28,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/avocado.jpg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    },{
+      id: 2,
+      title: "Mango and Coconut Yogurt Bowl",
+      price: 3.01,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/mango.jpg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    },{
+      id: 3,
+      title: "Justin’s Classic Almond Butter",
+      price: 3.01,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "Resources/Images/justice.jpg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    }]}]
+
+
+    renderItems();
+    updateCartBadge();
+  </script>
+</body>
+
+</html>

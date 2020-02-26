@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="Resources/css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <style>
+    tr {
+      position: relative;
+      margin-bottom: 1em;
+      border-top: 1px solid #aaa198;
+      border-bottom: 1px solid #aaa198;
+      ;
+    }
+    .fields {
+      clear: both;
+    }
+    .region {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0 10px;
+    }
+    #item_img {
+      margin-top: 15vh;
+      margin-left: 40px;
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 55px;
+    }
+    h2, h4 {
+      color: black;
+      text-align: left;
+      font-family: 'Open Sans Condensed', sans-serif;
+    }
+    .hero-section-override {
+      height: 85vh;
+      background: url("http://musicments.com/img/d_default/table-background/table-background-wood-5c74728ac1073.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+    .hero-2 {
+      width: 85vh;
+    }
+    .break-word {
+      word-wrap: break-word;
+    }
+    .hero-btn-override {
+      margin-top: 50px;
+      margin-left: -1.5%;
+      padding: 4px 30px;
+      font-variant: all-small-caps;
+      border-radius: 6px;
+      border: 2;
+      color: green;
+    }
+    .nav-right-items-space {
+      padding-right: 1rem
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid main-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="Resources/Images/logo.png" width="70px" height="auto" class="d-inline-block align-top" alt="">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="menu.html">Menu</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="myCard.html">My Card</a>
+          </li>
+        </ul>
+        <span class="my-2 my-lg-0 nav-right-items-space" onclick="window.location='cart.html'"><i class="fa fa-2x fa-shopping-cart"></i><span id="cart-badge" class="badge badge-pill badge-danger"></span></span>
+        <span class="nav-right-items-space">Welcome back, Hieu!</span>
+        <button class="btn btn-outline-success my-2 my-sm-0 nav-right-items-space" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+    <div class="row hero-section-override">
+      <div class="col-md-5 hero-1">
+        <img id="item_img" src="https://globalassets.starbucks.com/assets/f344c66e8de74a4faf5c65f4060cf1f7.jpg" width="520px" height="auto">
+      </div>
+      <div class=" hero-2 break-word">
+        <!-- <div class="row"> -->
+        <h2 id="title"></h2>
+        <h3 id="price"></h3>
+        <h4 id="description"></h4>
+        <!-- </div> -->
+        <button class="btn btn-outline-success hero-btn-override" onclick="addItem()" data-toggle="modal" data-target="#confirmModal">Add To Cart</button>
+
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body" style="text-align:center">
+                Item is added to cart.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row menu-section" id="menu">
+      <h1>
+        Nutrition Fact
+      </h1>
+      <div class="fields facts">
+        <div class="region size2of3 reset-left">
+          <table class="nutrition" summary="This table summarizes nutritional information for a Dragon Drink">
+            <br>
+            <strong>Nutrition Facts Per Serving (16 fl oz)</strong>
+            <tbody id="nutrition_content">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="row card-section">
+      <h1>
+        Ingredient
+      </h1>
+      <div class="col card-info">
+        <div class="row money-container">
+          <span id="ingredient_text"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row footer">
+      © 2019 Starbucks Coffee Company. All rights reserved.
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="Resources/js/main.js"></script>
+
+  <script>
+    function renderNutritionFact() {
+      var params = item.nutrition || {};
+      var content = `
+        <tr>
+          <td><strong>Calories</strong> ${params.calories}</td>
+          <td>Calories from Fat ${params.calories_from_fat}</td>
+        </tr>
+        <tr>
+          <th></th>
+          <th class="daily_value">% Daily Value*</th>
+        </tr>
+        <tr>
+          <td><strong>Total Fat</strong> ${params.fat}g</td>
+          <td class="daily_value">${params.daily_percent_fat}%</td>
+        </tr>
+        <tr>
+          <td class="sub">Saturated Fat ${params.saturated_fat}g</td>
+          <td class="daily_value">${params.daily_percent_saturated_fat}%</td>
+        </tr>
+        <tr>
+          <td class="sub">Trans Fat ${params.trans_fat}g</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><strong>Cholesterol</strong> ${params.cholesterol}mg</td>
+          <td class="daily_value">${params.daily_percent_cholesterol}%</td>
+        </tr>
+        <tr>
+          <td><strong>Sodium</strong> ${params.sodium}mg</td>
+          <td class="daily_value">${params.daily_percent_sodium}%</td>
+        </tr>
+        <tr>
+          <td><strong>Total Carbohydrate</strong> ${params.carbohydrate}g</td>
+          <td class="daily_value">${params.daily_percent_carbohydrate}%</td>
+        </tr>
+        <tr>
+          <td class="sub">Dietary Fiber ${params.fiber}g</td>
+          <td class="daily_value">${params.daily_percent_fiber}%</td>
+        </tr>
+        <tr>
+          <td class="sub">Sugars ${params.sugar}g</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><strong>Protein</strong> ${params.protein}g</td>
+          <td class="daily_value"></td>
+        </tr>
+        <tr>
+          <td colspan="2">Caffeine ${params.caffeine}mg**</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="note">*Percent Daily Values are based on a 2,000 calorie diet.</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="note">**Each caffeine value is an approximate value.</td>
+        </tr>
+      `;
+      $("#nutrition_content").html(content);
+    }
+
+    function renderIngredient() {
+      $("#ingredient_text").html(item.ingredient);
+    }
+
+    function renderItemInfo() {
+      $("#title").html(item.title);
+      $("#description").html(item.description);
+      $("#price").html(`$${Number(item.price).toFixed(2)}`);
+    }
+
+    function updateCartBadge(){
+      $("#cart-badge").html(cart.items.length);
+    }
+
+    function addItem() {
+      cart.items.push(item);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartBadge()
+    }
+
+    function logout(){
+      localStorage.setItem("profile", JSON.stringify({}));
+      window.location = "index.html"
+    }
+  </script>
+
+  <script>
+    var profile = localStorage.getItem("profile");
+    if (profile){
+      profile = JSON.parse(profile);
+    }
+    else {
+      profile = {};
+    }
+
+    if (!profile.token){
+      // TODO: return to login page when not login
+      // logout();
+    }
+  </script>
+
+  <script>
+    // Retrieve data from local storage
+    var cart = localStorage.getItem("cart");
+    if (cart){
+      cart = JSON.parse(cart);
+    }
+    else {
+      cart = {
+        items: []
+      }
+    }
+  </script>
+
+  <script>
+    // TODO: make call to server here
+    var item = {
+      title: "Chai Latte",
+      price: 5.0,
+      description: "Black tea infused with cinnamon, clove, and other warming spices is combined with steamed milk and topped with foam for the perfect balance of sweet and spicy.",
+      image: "https://globalassets.starbucks.com/assets/f344c66e8de74a4faf5c65f4060cf1f7.jpg",
+      nutrition: {
+        calories: 130,
+        calories_from_fat: 25,
+        fat: 3,
+        daily_percent_fat: 5,
+        saturated_fat: 2.5,
+        daily_percent_saturated_fat: 12,
+        trans_fat: 0,
+        cholesterol: 0,
+        daily_percent_cholesterol: 0,
+        sodium: 60,
+        daily_percent_sodium: 2,
+        carbohydrate: 26,
+        daily_percent_carbohydrate: 9,
+        fiber: 0,
+        daily_percent_fiber: 0,
+        sugar: 23,
+        protein: 1,
+        caffeine: "45–55"
+      },
+      ingredient: "<strong>Ice, Mango Dragonfruit Refreshers Base</strong> [Water, Sugar, White Grape Juice Concentrate, Natural Flavors, Citric Acid, Natural Green Coffee Flavor, Rebaudiside-a], Coconutmilk [Water, Coconut Cream, Cane Sugar, Contains 2% Or Less Of Tricalcium Phosphate, Coconut Water Concentrate, Sea Salt, Natural Flavors, Xanthan Gum, Gellan Gum, Corn Dextrin, Guar Gum, Vitamin A Palmitate, And Vitamin D2], Freeze Dried Dragonfruit Pieces."
+    }
+
+    renderItemInfo();
+    renderNutritionFact();
+    renderIngredient();
+    updateCartBadge();
+  </script>
+</body>
+
+</html>
